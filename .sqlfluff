@@ -1,0 +1,52 @@
+[sqlfluff]
+dialect = postgres
+templater = dbt
+exclude_rules = L001, L008, L031, L029, L016
+
+[sqlfluff:templater:dbt]
+project_dir = dbt/
+profiles_dir = dbt/
+profile = dbt_arado
+target = local
+
+[sqlfluff:indentation]
+indented_ctes = true
+tab_space_size = 2
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
+
+[sqlfluff:rules:layout.long_lines]
+ignore_comment_clauses = true
+
+[sqlfluff:rules:references.keywords]
+ignore_words = warehouses, key
+
+[sqlfluff:rules:capitalisation.functions]
+# Function names
+extended_capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.literals]
+# Null & Boolean Literals
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.types]
+# Data Types
+extended_capitalisation_policy = upper
+
+[sqlfluff:rules:references.special_chars]
+# Data Types
+additional_allowed_characters = -, %, $, &, (, ), /, +, '#'
+
+[sqlfluff:layout:type:alias_expression]
+# We want non-default spacing _before_ the alias expressions.
+spacing_before = align
+# We want to align them within the next outer select clause.
+# This means for example that alias expressions within the FROM
+# or JOIN clause would _not_ be aligned with them.
+align_within = select_clause
+# The point at which to stop searching outward for siblings, which
+# in this example would likely be the boundary of a CTE. Stopping
+# when we hit brackets is usually a good rule of thumb for this
+# configuration.
+align_scope = bracketed
