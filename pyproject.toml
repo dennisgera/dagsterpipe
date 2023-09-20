@@ -8,6 +8,9 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 dagster = "^1.4.14"
+pandas = "^2.1.0"
+pyarrow = "^13.0.0"
+dagster-aws = "^0.20.14"
 
 
 [tool.poetry.group.dev.dependencies]
