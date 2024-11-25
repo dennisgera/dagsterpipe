@@ -1,0 +1,30 @@
+dbt_dagsterpipe:
+  target: "{{ env_var('DBT_TARGET', 'local') }}"
+  outputs:
+    dev:
+      type: postgres
+      threads: 2
+      host: "{{ env_var('WAREHOUSE_HOST') }}"
+      port: "{{ env_var('WAREHOUSE_PORT', 5432) | int }}"
+      user: "{{ env_var('DBT_USER') }}"
+      pass: "{{ env_var('DBT_PASSWORD') }}"
+      dbname: "{{ env_var('WAREHOUSE_DATABASE') }}"
+      schema: "{{ env_var('USER', 'john_doe') }}"
+    prod:
+      type: postgres
+      threads: 1
+      host: "{{ env_var('WAREHOUSE_HOST') }}"
+      port: "{{ env_var('WAREHOUSE_PORT', 5432) | int }}"
+      user: "{{ env_var('DBT_USER') }}"
+      pass: "{{ env_var('DBT_PASSWORD') }}"
+      dbname: "{{ env_var('WAREHOUSE_DATABASE') }}"
+      schema: analytics    
+    local:
+      type: postgres
+      threads: 8
+      host: localhost
+      port: 5432
+      user: postgres
+      pass: ""
+      dbname: warehouse
+      schema: analytics

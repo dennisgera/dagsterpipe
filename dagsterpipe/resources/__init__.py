@@ -8,7 +8,7 @@ from dagster_dbt import DbtCliResource
 from dagsterpipe.resources.postgres.postgres_client_resource import PostgresClientResource
 from dagsterpipe.resources.postgres.postgres_pandas_type_handler import DbtPostgresPandasIOManager, PostgresPandasIOManager
 
-# DBT_PROJECT_DIR = file_relative_path(__file__, "../../dbt")
+DBT_PROJECT_DIR = file_relative_path(__file__, "../../dbt")
 USER = os.getenv("USER", "john_doe")
 
 
@@ -21,7 +21,7 @@ RESOURCES_PROD = {
     "alphavantage_client": AlphaVantageAPI(
         api_access_key=EnvVar("ALPHAVANTAGE_API_ACCESS_KEY"),
     ),
-    # "dbt": DbtCliResource(project_dir=DBT_PROJECT_DIR, target="prod"),
+    "dbt": DbtCliResource(project_dir=DBT_PROJECT_DIR, target="prod"),
     "dbt_postgres_pandas_io_manager": DbtPostgresPandasIOManager(
         database="warehouse",
         host=EnvVar("WAREHOUSE_HOST"),
@@ -64,7 +64,7 @@ RESOURCES_LOCAL = {
     "alphavantage_client": AlphaVantageAPI(
         api_access_key=EnvVar("ALPHAVANTAGE_API_ACCESS_KEY"),
     ),
-    # "dbt": DbtCliResource(project_dir=DBT_PROJECT_DIR, target="dev"),
+    "dbt": DbtCliResource(project_dir=DBT_PROJECT_DIR, target="dev"),
     "dbt_postgres_pandas_io_manager": DbtPostgresPandasIOManager(
         database="warehouse",
         host=EnvVar("WAREHOUSE_HOST"),
