@@ -6,16 +6,24 @@ authors = ["Dennis Gera <geradennis@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
-dagster = "^1.4.14"
+python = ">=3.10,<3.13"
+dagster = "^1.9"
 pandas = "^2.1.0"
 pyarrow = "^13.0.0"
-dagster-aws = "^0.20.14"
+dagster-aws = "^0.25"
+psycopg2 = "^2.9.10"
+dagster-dbt = "^0.25.3"
+numpy = ">=1.24.0,<2.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
-dagster-webserver = "^1.4.14"
+dagster-webserver = "^1.9"
 pytest = "^7.4.2"
+
+
+[tool.poetry.group.dbt.dependencies]
+dbt-core = "^1.8"
+dbt-postgres = "^1.8"
 
 [build-system]
 requires = ["poetry-core"]
