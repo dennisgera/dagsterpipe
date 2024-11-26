@@ -14,6 +14,7 @@ dagster-aws = "^0.25"
 psycopg2 = "^2.9.10"
 dagster-dbt = "^0.25.3"
 numpy = ">=1.24.0,<2.0.0"
+tenacity = "^9.0.0"
 
 
 [tool.poetry.group.dev.dependencies]

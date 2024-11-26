@@ -22,7 +22,7 @@ services:
       mc mb myminio/local-warehouse
       "
   dagster-db:
-    image: postgres:13-alpine
+    image: postgres:15-alpine
     volumes:
       - dagster_db_data:/var/lib/postgresql/data/
     environment:

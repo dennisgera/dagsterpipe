@@ -281,6 +281,7 @@ class PostgresClientResource(ConfigurableResource):
 
             insert_values = format_insert_values(df_batch)
             merge_query = build_merge_query(df_batch, insert_values)
+            print(merge_query)
             client.execute_query(merge_query)
 
     @staticmethod
