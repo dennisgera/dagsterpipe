@@ -8,7 +8,7 @@ from dagsterpipe.resources.postgres.postgres_client_resource import (
     PostgresClientResource,
 )
 
-tickers_partitions_def = StaticPartitionsDefinition(["IBM", "AAPL", "TSLA"])
+tickers_partitions_def = StaticPartitionsDefinition(["IBM", "AAPL", "TSLA", "MSFT", "GOOGL"])
 
 def process_time_series_daily(data: dict, loaded_at: datetime) -> pd.DataFrame:
     """
@@ -40,8 +40,6 @@ def process_time_series_daily(data: dict, loaded_at: datetime) -> pd.DataFrame:
         last_refreshed=meta.get("last refreshed"),
         loaded_at=loaded_at,
     )
-    # limit to 100 rows for demo purposes
-    df = df.head(100)
 
     return df
 
